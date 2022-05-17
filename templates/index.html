@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    <title>Document</title>
+</head>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+      </style>
+    
+    <body>
+    
+      <div class="wrapper flex_box">
+        <form action="{{url_for('predict_score')}}" method="post">
+          <div class="input">
+            <label>
+              Number of courses.
+            </label>
+            <input class="number_courses" name="number_courses" placeholder="Number of courses...?" type="text" required>
+          </div>
+          <div class="input">
+            <label>
+              Hours spent studying.
+            </label>
+            <input class="time_study" name="time_study" placeholder="Hours spent studying...?" required></input>
+          </div>
+          <br>
+          <div class="input">
+              
+            {% if prediction_text %}
+                <label>
+                Predicted Score: {{prediction_text}}
+                </label>
+            {% endif %}  
+            
+          </div>
+          <div class="button_wrapper">
+            <button type="submit">
+              Predict Score
+            </button>
+          </div>
+        </form>
+      </div>
+      
+      <div class="cover"></div>
+    
+      <div class="sign">
+        by masahito / <a href="http://www.ma5a.com/" >ma5a.com</a>
+      </div>
+    <script src="{{url_for('static', filename = 'main.js')}}"></script>
+    </body>
+
+</html>
